@@ -1,31 +1,32 @@
 body {
-    padding-left: 40px;
-    padding_top: 40px;
+    padding: 10px 5px;
+    box-sizing: border-box;
 }
 
-table {
-    min-width: 400px;
-    min-height: 200px;
-    border: 1px solid black;
+.container {
+    width: auto;
+    max-width: 420px;
+    min-width: 100px;
+    height: auto;
+    padding: 10px 10px;
+    background-color: #ddffdd;
+}
+
+h1 {
+    font-size: 22px;
+    text-decoration: underline;
 }
 
 td {
     width: auto;
-    min-width: 80px;
-    min-height: 80px;
-    padding: 5px 15px;
-    background-color: #eeffee;
+    min-width: 160px;
+    padding: 5px 10px;
 }
 
-thead td {
-    background-color: #aaffaa;
+tr:nth-child(2n+1) {
+    background-color: #bbbbff;
 }
 
-h1 {
-    font-size: 26px;
-    text-decoration: underline;
-}
-
-h2 {
-    font-size: 20px;
+tr:nth-child(2n+2) {
+    background-color: #eeeeff;
 }
