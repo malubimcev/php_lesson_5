@@ -12,6 +12,10 @@ body {
     background-color: #ddffdd;
 }
 
+table {
+    margin: 0 auto;
+}
+
 h1 {
     font-size: 22px;
     text-decoration: underline;

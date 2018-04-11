@@ -36,7 +36,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>PHP_lesson_4</title>
+        <title>PHP_lesson_5</title>
         <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
