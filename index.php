@@ -4,33 +4,20 @@
     $userKey = "c75ecbe2264d2b9f9e34626b184ba756";//личный код пользователя OpenWeatherMap
     $request = "http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$userKey";//запрос на сервер OpenWeatherMap
     $response = file_get_contents($request);//ответ сервера
-    if($response){
+    if($response){ //если ответ есть, то сохраняем его в файле
         file_put_contents('weather.json', $response);
-        $weather_data = json_decode($response, true);
-        unset($response);
-        foreach ($weather_data as $key => $data) {
-            switch ($key) {
-                case "weather":
-                    $cloudiness =$data[0]['description'];
-                    break;
-                case "main":
-                    $celsius = $data['temp'] - $celsiusZero;
-                    $pressure = $data['pressure'];
-                    $humidity = $data['humidity'];
-                    break;
-                case "wind":
-                    $wind_speed = $data['speed'];
-                    $wind_direction = $data['deg'];
-                    break;
-                case "sys":
-                    $sunrise = strftime("%c", $data['sunrise']);
-                    $sunset = strftime("%c", $data['sunset']);
-                    break;
-            }
-        }
-    } else {
-        exit;
     }
+    $response = file_get_contents('weather.json');//читаем файл
+    $weather_data = json_decode($response, true);
+    unset($response);
+    $cloudiness = $weather_data['weather'][0]['description'];
+    $celsius = $weather_data['main']['temp'] - $celsiusZero;
+    $pressure = $weather_data['main']['pressure'];
+    $humidity = $weather_data['main']['humidity'];
+    $wind_speed = $weather_data['wind']['speed'];
+    $wind_direction = $weather_data['wind']['deg'];
+    $sunrise = date('Y-m-d H:i:s', $weather_data['sys']['sunrise']);
+    $sunset = date('Y-m-d H:i:s', $weather_data['sys']['sunset']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,7 +27,7 @@
         <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
-        <div class="container">
+        <div class="weather-widget">
             <?php echo "<h1>Current weather in $city</h1>"; ?>
             <table>
                 <tbody>

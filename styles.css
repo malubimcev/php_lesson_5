@@ -3,11 +3,12 @@ body {
     box-sizing: border-box;
 }
 
-.container {
+.weather-widget {
     width: auto;
     max-width: 420px;
     min-width: 100px;
     height: auto;
+    margin: 5px auto;
     padding: 10px 10px;
     background-color: #ddffdd;
 }
@@ -17,7 +18,9 @@ table {
 }
 
 h1 {
+    margin: 5px auto;
     font-size: 22px;
+    text-align: center;
     text-decoration: underline;
 }
 
